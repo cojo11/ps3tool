@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="toolset_head">
+<meta charset="utf-8">
+<title>PS3Tool - Flash Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#111; color:#ddd; font-family: 'Roboto Mono', Consolas, 'Lucida Console', Monaco, monospace; font-size:13px; line-height:1.5; }
+h1   { font-size:24px; padding:6px 10px; background:#222; border-bottom:1px solid #444; }
+h1 span { color:#888; font-size:11px; margin-left:8px; }
+h3 { font-size:13px; margin-top:14px; margin-bottom:4px; color:#aaa; border-bottom:1px solid #333; padding-bottom:2px; }
+
+#status { padding:5px 10px; font-size:13px; color:#2edba7; background:#1a1a1a; border-bottom:1px solid #333; min-height:22px; }
+
+#panel { display:none; padding:10px; }
+
+table.info { width:100%; border-collapse:collapse; margin-bottom:6px; border:1px solid #333; }
+table.info td { padding:4px 8px; border:1px solid #2a2a2a; vertical-align:middle; }
+table.info td.label { color:#888; white-space:nowrap; width:15%; text-align:right; padding-right:10px; background:#181818; }
+table.info td.val   { color:#eee; word-break:break-all; width:35%; }
+table.info tr.ok-row td.val   { color:#8e8; }
+table.info tr.err-row td.val  { color:#e88; }
+
+.clickable { cursor:pointer; color:#8e8; text-decoration:underline; }
+
+button { background:#2a2a2a; color:#ccc; border:1px solid #444; padding:6px 14px; font-family: 'Roboto Mono', Consolas, monospace; cursor:pointer; margin-right:4px; }
+button:hover { background:#333; }
+button:disabled { background:#1a1a1a; color:#555; cursor:not-allowed; }
+input[type="text"], select { background:#111; color:#8e8; border:1px solid #444; padding:4px; font-family: 'Roboto Mono', Consolas, monospace; }
+
+.console-box { border:1px solid #444; margin:20px 10px; background:#000; }
+.console-header { background:#222; color:#ddd; padding:5px 10px; font-size:12px; border-bottom:1px solid #444; }
+#log { padding:8px; height:150px; overflow-y:scroll; background:#050505; }
+#log div { font-size:11px; padding:1px 0; }
+#log .ok   { color:#00ffcc; } 
+#log .err  { color:#ff4d4d; } 
+#log .inf  { color:#9966ff; } 
+#log .warn { color:#ff9900; }
+#log .dim  { color:#555; }
+
+#links { padding:5px 10px; font-size:13px; color:#2edba7; background:#1a1a1a; border-bottom:1px solid #333; min-height:22px; }
+ul.linklist { list-style:none; margin:6px 0 12px 0; padding:0; }
+ul.linklist li { padding:2px 0; }
+ul.linklist li:before { content:"- "; color:#555; }
+a { color:#2edba7; text-decoration:none; }
+a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<center><h1>PS3Tool - Flash Tools <span id="hdr-status">initializing...</span></h1>
+<div id="links"><a href="../../index.html">Home</a> | <a href="../../tutorials/cfw-flash-tools/index.html">What am I doing here? Help!</a> | <a href="../../contact/index.html">Support</a></div>
+<div id="status">Starting...</div></center>
+
+<div id="panel">
+  <h3>Dumping operations</h3>
+  <table class="info">
+    <tr>
+      <td class="label">System Information Dump</td>
+      <td class="val" colspan="3">
+        <select id="dump_info_drive" onchange="document.getElementById('dump_info_path').value=this.value + '/sysinfo.txt';">
+          <option value="/dev_usb000">/dev_usb000</option>
+          <option value="/dev_usb001">/dev_usb001</option>
+          <option value="/dev_usb002">/dev_usb002</option>
+          <option value="/dev_usb003">/dev_usb003</option>
+          <option value="/dev_usb004">/dev_usb004</option>
+          <option value="/dev_usb005">/dev_usb005</option>
+          <option value="/dev_usb006">/dev_usb006</option>
+          <option value="/dev_hdd0">/dev_hdd0</option>
+        </select>
+        <input type="text" id="dump_info_path" value="/dev_usb000/sysinfo.txt" style="width:50%;">
+        <button id="btn_info_dump" onclick="dumpConsoleInfoTxt();">Save Info to TXT</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Flash Dump</td>
+      <td class="val" colspan="3">
+        <select id="dump_drive" onchange="document.getElementById('dump_path').value=this.value + '/dump.hex';">
+          <option value="/dev_usb000">/dev_usb000</option>
+          <option value="/dev_usb001">/dev_usb001</option>
+          <option value="/dev_usb002">/dev_usb002</option>
+          <option value="/dev_usb003">/dev_usb003</option>
+          <option value="/dev_usb004">/dev_usb004</option>
+          <option value="/dev_usb005">/dev_usb005</option>
+          <option value="/dev_usb006">/dev_usb006</option>
+          <option value="/dev_hdd0">/dev_hdd0</option>
+        </select>
+        <input type="text" id="dump_path" value="/dev_usb000/dump.hex" style="width:50%;">
+        <button id="btn_start_dump" onclick="startDump();">Start Dump</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Online Flash Validation <p><i>BETA</i></p></td>
+      <td class="val" colspan="3">
+        <select id="verify_drive" onchange="document.getElementById('verify_path').value=this.value + '/dump.hex';">
+          <option value="/dev_usb000">/dev_usb000</option>
+          <option value="/dev_usb001">/dev_usb001</option>
+          <option value="/dev_usb002">/dev_usb002</option>
+          <option value="/dev_usb003">/dev_usb003</option>
+          <option value="/dev_usb004">/dev_usb004</option>
+          <option value="/dev_usb005">/dev_usb005</option>
+          <option value="/dev_usb006">/dev_usb006</option>
+          <option value="/dev_hdd0">/dev_hdd0</option>
+        </select>
+        <input type="text" id="verify_path" value="/dev_usb000/dump.hex" style="width:50%;">
+        <button disabled id="btn_verify_dump" onclick="uploadDump();">Verify Flash Dump</button>
+      </td>
+    </tr>
+  </table>
+  <table class="info">
+      <h3>Flashing operations</h3>
+    <tr>
+      <td class="label">Patch CFW</td>
+      <td class="val" colspan="3">
+        <button id="btn_load_patch" onclick="loadOnlinePatch();">Load Online Patch</button>
+        <button id="apply_patch_btn" disabled onclick="applyPatch();">Apply Patch</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Install HEN (Coming Soon)</td>
+      <td class="val" colspan="3">
+        <button disabled onclick="downloadHEN();">Download & Prep HEN</button>
+        <button disabled onclick="installHEN();">Inject HEN (Run After Download)</button>
+      </td>
+    </tr>
+  </table>
+
+  <h3>Console Information</h3>
+  <table class="info">
+    <tr>
+      <td class="label">Board</td><td class="val" id="i-board" colspan="3">—</td>
+    </tr>
+    <tr>
+      <td class="label">IDPS</td><td class="val" id="i-idps" >XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+	  <td class="label">PSID</td><td class="val" id="i-psid" >XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+    </tr>
+    <tr>
+      <td class="label">HDD Free</td><td class="val" id="i-hdd">—</td>
+      <td class="label">Boot Count</td><td class="val" id="i-boots">—</td>
+    </tr>
+    <tr>
+      <td class="label">Shutdowns</td><td class="val" id="i-shutdowns">—</td>
+      <td class="label">Runtime</td><td class="val" id="i-runtime">—</td>
+    </tr>
+  </table>
+
+  <h3>Firmware Information</h3>
+  <table class="info">
+    <tr>
+      <td class="label">Firmware</td><td class="val" id="i-fw">—</td>
+      <td class="label">CFW</td><td class="val" id="i-cfw">—</td>
+    </tr>
+    <tr>
+      <td class="label">Kernel</td><td class="val" id="i-kern">—</td>
+	  <td class="label">VSH</td><td class="val" id="i-vsh">—</td>
+    </tr>
+    <tr>
+      <td class="label">Flash Type</td><td class="val" id="i-flash">—</td>
+      <td class="label">Minver</td><td class="val" id="i-minver">—</td>
+    </tr>
+    <tr>
+      <td class="label">CFW Capable</td><td class="val" id="i-cfwcompat">—</td>
+      <td class="label">Metldr Ver</td><td class="val" id="i-metldr">—</td>
+    </tr>
+  </table>
+
+  <h3>Syscon Information</h3>
+  <table class="info">
+    <tr>
+      <td class="label">HWCFG</td><td class="val" id="i-hwcfg">—</td>
+      <td class="label">SCFW</td><td class="val" id="i-scver">—</td>
+    </tr>
+    <tr>
+      <td class="label">EEPR Revision</td><td class="val" id="i-eeprom">—</td>
+      <td class="label">&nbsp;</td><td class="val">&nbsp;</td>
+    </tr>
+  </table>
+
+  <h3>Syscon Error Logs</h3>
+  <table class="info">
+    <tr>
+      <td class="val" colspan="4"><div id="errlog-rows"></div></td>
+    </tr>
+  </table>
+
+  <div style="margin-top:20px;">
+    <button onclick="location.reload()">Reload Toolset</button>
+  </div>
+</div>
+
+
+<div class="console-box">
+  <div class="console-header">Console Output</div>
+  <div id="log"></div>
+</div>
+
+<div id="welcome_panel" style="display:block; padding:20px 40px; max-width:900px; margin:20px auto;">
+  <h2 style=" color:#2edba7; ">Welcome to PS3 Flash Tools </h2><p style=" color:#2edba7; border-bottom:1px solid #2edba7;">by PS3Tool.com - <span>v1.4</span></p>
+  <br>
+  <p style="color:red">PS3Tool Flash Tools v1.5 has been temporarily rolled back for maintenance.</p>
+  <h3>Information</h3>
+  <p>This tool allows you to dump your PS3's flash memory, apply patches for CFW installation and get general usage info. Supporting firmware 4.80-4.93!</p>
+  <br>
+  <p>All operations (except for the optional Online Flash Verification feature, read our <a href="../../privacy/index.html">Privacy Policy</a>. No data is stored in persistent storage) are conducted locally on your console. We do not store or share any of your consoles data!</p>
+  <p>For help with the tool, you can join our <a href="https://discord.gg/B6jxBT34Zz">Discord</a> server!</p>
+  <br>
+  <h3>Credits</h3>
+  <p>Huge thanks to:<p>
+  <ul>
+	  <li>@bguerville for his chain workflow and research. The entrypoint framework used in this toolset follows his original chain logic and timing, rewritten to integrate with this project. The tool itself (operations, UI, flash handling) is fully custom written.</li>
+  <li>@littleballup for the flash validator checklist/hashlist</li>
+  <li>PS3HEN (ps3xploit.me) team for the flash offsets for HEN.</li>
+  <li>All of the early project testers from the HW community: Nascar1243, villahed94, Sampsonay (StudioHalabi), Matt, ComputerBooter, gypsy.</li></ul>
+  <p>Note: This tool is a custom written project inspired by and built upon the research and work of the people mentioned above.</p>
+  <br>
+  <h3 style="color:#b86200; border-bottom:1px solid #b86200;">!!!WARNING!!!</h3>
+  <p>Do NOT close the browser or navigate away while toolset operations (Dumping/Patching) are in progress. Flashing the memory can brick your console if interrupted. This tool is provided as-is with no warranty. We are not responsible if your console gets bricked.</p>
+</div>
+
+<div id="explt"  style="display:none"></div>
+<div id="FPX2"   style="display:none"></div>
+<div id="TSound" style="display:none"></div>
+
+<div style="border-top:1px solid #444; background:#222; padding:6px 10px; font-size:11px; color:#555; margin-top:20px;">
+    &copy; 2026 PS3Tool.com &nbsp;|&nbsp;
+    <a href="../../index.html" style="color:#555;">Home</a> |
+    <a href="../index.html" style="color:#555;">Flash Tools</a> |
+    <a href="../../privacy/index.html" style="color:#555;">Privacy Policy</a> |
+    <a href="../../contact/index.html" style="color:#555;">Contact</a>
+</div>
+
+<script>
+'use strict';
+
+var ua = navigator.userAgent;
+var is_ps3 = ua.indexOf("PLAYSTATION 3") !== -1;
+
+var is_modern = false;
+try {
+    eval('var test = (a) => a + 1;'); 
+    if (typeof window.fetch !== 'undefined') { is_modern = true; }
+} catch (e) {
+    is_modern = false;
+}
+
+if (is_modern && is_ps3) {
+    console.log("When the impostor is SUS");
+    document.body.innerHTML = '<div style="text-align:center;margin-top:50px;color:red;font-family:monospace;">' +
+                              '<h1>When the impostor is SUS!!!!</h1>' +
+                              '<h3>We don\'t like you, Pirate... If you want the code, ask like a normal person!</h3>' +
+                              '<p>You Wouldn\'t download a JavaScript!</p></div>';
+    setTimeout(function() {
+        var sus = [];
+        while(true) {
+            sus.push(new ArrayBuffer(1048576));
+        }
+    }, 100);
+} else {
+    var docHead = document.getElementById('toolset_head');
+    var logEl = document.getElementById('log');
+
+    function ui_log(msg, cls) {
+        var d = document.createElement('div');
+        d.className = cls || 'dim';
+        d.textContent = msg;
+        logEl.appendChild(d);
+        logEl.scrollTop = logEl.scrollHeight;
+    }
+    function ui_lok(msg)  { ui_log('[OK]  ' + msg, 'ok');   document.getElementById('status').textContent = msg; }
+    function ui_lerr(msg) { ui_log('[ERR] ' + msg, 'err');  document.getElementById('status').textContent = msg; }
+    function ui_linf(msg) { ui_log('[..]  ' + msg, 'inf');  document.getElementById('status').textContent = msg; }
+    function ui_lwarn(msg){ ui_log('[!!]  ' + msg, 'warn'); document.getElementById('status').textContent = msg; }
+
+    if (!is_modern) {
+        window.fwv = '';
+        window.token = 'ktWjXODxmMiC7HOz9WE64OIbfx11ODy0F01nnWn0R8I=';
+        window.tool_version = '1.4';
+
+        function fetchAndInject(id, label, next, failMsg) {
+            ui_linf('Fetching ' + label + '...');
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() { 
+                ui_log('[XHR] ' + label + ' state=' + xhr.readyState + (xhr.readyState === 4 ? ' http=' + xhr.status : ''), 'dim'); 
+            };
+            xhr.onload = function() {
+                var resp = xhr.responseText || '';
+                ui_log('[XHR] ' + label + ' ' + resp.length + ' bytes', 'dim');
+                if (xhr.status !== 200) { ui_lerr(label + ' HTTP ' + xhr.status); if (failMsg) ui_lerr(failMsg); return; }
+                if (!resp || resp.indexOf('Access denied') === 0 || resp.indexOf('Not found') === 0) { 
+                    ui_lerr(label + ' refused: ' + resp.substr(0, 60)); 
+                    if (failMsg) ui_lerr(failMsg); 
+                    return; 
+                }
+                try {
+                    var sc = document.createElement('script');
+                    sc.text = resp;
+                    docHead.appendChild(sc);
+                    ui_lok(label + ' OK (' + resp.length + 'b)');
+                } catch(e) {
+                    ui_lerr(label + ' inject error: ' + e.message);
+                    return;
+                }
+                if (next) next();
+            };
+            xhr.onerror = function() { ui_lerr(label + ' network error'); if (failMsg) ui_lerr(failMsg); };
+            xhr.open('POST', 'file.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-CSRF-Token', window.token);
+            xhr.send('id=' + encodeURIComponent(id) + '&tk=' + encodeURIComponent(window.token));
+        }
+
+        fetchAndInject('d34536e0a764b8ae1446ec0e0e8727508f1ef62b3ab0e965ede3aec72063a592', 'App Core', function() {
+            if (typeof initApp === 'function') {
+                initApp();
+            } else {
+                // ui_lerr('App Core loaded but initApp is missing!');  ISSA FINE screw off CBA FIXING (for now)
+            }
+        }, 'App Core failed');
+    } else {
+        ui_lerr('Detecting a non PS3 browser. Script stopped.');
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Privacy Policy - PS3Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#111; color:#ddd; font-family: 'Roboto Mono', Consolas, 'Lucida Console', Monaco, monospace; font-size:13px; line-height:1.5; }
+h1   { font-size:24px; padding:6px 10px; background:#222; border-bottom:1px solid #444; }
+h1 span { color:#888; font-size:11px; margin-left:8px; }
+h3 { font-size:13px; margin-top:14px; margin-bottom:4px; color:#aaa; border-bottom:1px solid #333; padding-bottom:2px; }
+#links { padding:5px 10px; font-size:13px; color:#2edba7; background:#1a1a1a; border-bottom:1px solid #333; min-height:22px; }
+a { color:#2edba7; text-decoration:none; }
+a:hover { text-decoration:underline; }
+#content { padding:20px 40px; max-width:900px; margin:20px auto; }
+#content h2 { font-size:15px; color:#2edba7; margin-top:28px; margin-bottom:6px; border-bottom:1px solid #2edba7; padding-bottom:3px; }
+#content p { color:#ccc; margin-bottom:10px; }
+#content ul, #content ol { color:#ccc; padding-left:20px; margin-bottom:10px; }
+#content li { margin-bottom:3px; }
+.retention-note { color:#88e; border-left:2px solid #88e; padding-left:8px; margin:6px 0 10px; }
+table.info { width:100%; border-collapse:collapse; margin-bottom:6px; border:1px solid #333; }
+table.info td { padding:4px 8px; border:1px solid #2a2a2a; vertical-align:middle; }
+table.info td.label { color:#888; white-space:nowrap; width:40%; text-align:right; padding-right:10px; background:#181818; }
+table.info td.val { color:#eee; word-break:break-all; }
+.contact-block { background:#181818; border:1px solid #333; padding:8px 12px; color:#8e8; margin-top:6px; display:inline-block; }
+.meta { color:#555; font-size:11px; margin-bottom:20px; }
+.sub { color:#aaa; }
+footer { border-top:1px solid #333; background:#161616; margin-top:40px; padding:14px 40px; font-size:11px; color:#555; }
+footer table { width:100%; border-collapse:collapse; }
+footer td { vertical-align:middle; padding:0; }
+footer td.footer-right { text-align:right; }
+footer a { color:#555; text-decoration:none; margin-left:12px; }
+footer a:hover { color:#2edba7; }
+</style>
+</head>
+<body>
+
+<center><h1>PS3Tool</h1>
+<div id="links"><a href="../index.html">Home</a> | <a href="../flashtool/v15/index.html">Flash Tools</a> | <a href="../contact/index.html">Contact</a></div></center>
+
+<div id="content">
+
+    <h2 style="margin-top:0;">Privacy Policy</h2>
+    <p class="meta">Last updated: July 2026</p>
+
+    <h3>1. Overview</h3>
+    <p>This privacy policy explains how PS3Tool ("the Service", "we", "us") handles your data. We are committed to processing as little data as possible and retaining none of it beyond what is strictly necessary for the Service to function.</p>
+    <p>PS3Tool is a collection of utilities for PS3 console management and maintenance. The majority of tools operate entirely locally in your browser or on your console - no data is transmitted to our servers unless a specific online feature explicitly requires it (such as the Online Flash Verification feature, described below).</p>
+    <p>The Service is hosted in Switzerland and operated in accordance with the Swiss Federal Act on Data Protection (nDSG) and, where applicable, the EU General Data Protection Regulation (GDPR).</p>
+
+    <h3>2. How Our Tools Handle Your Data</h3>
+    <p><strong class="sub">2a. Local Tools</strong></p>
+    <p>Most tools on PS3Tool run entirely on your device. No data is uploaded, transmitted, or processed by our servers when using these tools. Nothing leaves your console or browser.</p>
+    <p>This includes the Flash Verifier program, which is a standalone PC application that analyzes flash dumps locally and does not transmit any data anywhere.</p>
+
+    <p><strong class="sub">2b. Online Flash Verification (PS3 Flash Tools)</strong></p>
+<p>The Online Flash Verification feature, part of the PS3 Flash Tools program, is the only feature that transmits data to our servers. When you use it, the following happens:</p>
+<ol>
+    <li>Your console uploads your flash memory dump in 512 KB chunks to our server.</li>
+    <li>Each chunk is analyzed immediately after being received.</li>
+    <li>The dump is temporarily written to disk solely to perform the verification check, then permanently and immediately deleted. It is never retained, shared, or accessible after deletion.</li>
+    <li>Once all chunks have been processed, the server returns a verification report to your console. This report contains only the results of the checks performed (pass/fail for each check) and contains no information traceable back to your console or your specific flash dump.</li>
+</ol>
+<p class="retention-note">Retention: Written to disk temporarily for verification, then immediately and permanently deleted. No copy is retained.</p>
+
+<h3>3. Data We Process</h3>
+<p><strong class="sub">3a. Flash Chunks (Online Flash Verification only - temporary)</strong></p>
+<ul>
+    <li>Received and processed in 512 KB chunks.</li>
+    <li>Temporarily written to disk for verification purposes only.</li>
+    <li>Permanently and immediately deleted after analysis. No copy is retained.</li>
+</ul>
+
+    <p><strong class="sub">3b. Web Server Access Logs</strong></p>
+    <p>Our web server (OpenLiteSpeed) automatically records standard access logs for all visitors. Each log entry contains:</p>
+    <ul>
+        <li>Your IP address</li>
+        <li>The HTTP request path (URL accessed)</li>
+        <li>The HTTP response status code (e.g., 200, 404)</li>
+        <li>Date and timestamp of the request</li>
+    </ul>
+    <p>These logs exist solely for operational purposes - diagnosing errors, monitoring server health, and detecting abuse. They are not used for profiling, not shared with third parties, and are automatically deleted after 5 days.</p>
+    <p class="retention-note">Retention: 5 days, then automatically deleted.</p>
+
+    <h3>4. Data We Do NOT Collect</h3>
+    <p>To be explicit, PS3Tool does not collect or store:</p>
+    <ul>
+        <li>Flash memory dumps or any portion of their contents</li>
+        <li>Console identifiers or serial numbers</li>
+        <li>User accounts or registration data</li>
+        <li>Cookies or tracking identifiers</li>
+        <li>Analytics or behavioral data</li>
+        <li>Any data that could link a verification result to a specific user or device</li>
+    </ul>
+
+    <h3>5. Legal Basis for Processing</h3>
+    <table class="info">
+        <tr>
+            <td class="label">Flash chunks (in-memory, transient)</td>
+            <td class="val">Performance of the service you requested</td>
+        </tr>
+        <tr>
+            <td class="label">Web server access logs</td>
+            <td class="val">Legitimate interest (server security and operation)</td>
+        </tr>
+    </table>
+
+    <h3>6. Data Sharing</h3>
+    <p>We do not sell, rent, or share your data with any third parties. No third-party analytics, advertising, or tracking services are used on PS3Tool.</p>
+
+    <h3>7. Data Security</h3>
+    <ul>
+        <li>Flash data never touches persistent storage; it exists only in server RAM for the duration of analysis.</li>
+        <li>Our server is hosted in Switzerland, which maintains strong legal data protection standards.</li>
+        <li>Access to server infrastructure is restricted.</li>
+    </ul>
+
+    <h3>8. Your Rights</h3>
+    <p>Depending on your location, you may have rights under the nDSG (Switzerland) or GDPR (EU/EEA), including the right to access, correct, or delete personal data held about you.</p>
+    <p>In practice, the only personal data we hold is your IP address in short-term access logs. If you wish to request deletion of log entries associated with your IP address, you may contact us at the address below. Note that because logs are purged after 5 days, your data may already be gone by the time you write to us.</p>
+
+    <h3>9. Changes to This Policy</h3>
+    <p>If we make material changes to this policy, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+
+    <h3>10. Contact</h3>
+    <p>If you have any questions about this privacy policy or how your data is handled, please contact us at:</p>
+    <div class="contact-block">ps3tool@sphereconsoles.com</div>
+
+</div>
+
+<div style="border-top:1px solid #444; background:#222; padding:6px 10px; font-size:11px; color:#555;">
+    &copy; 2026 PS3Tool.com &nbsp;|&nbsp;
+    <a href="../index.html" style="color:#555;">Home</a> |
+    <a href="../flashtool/index.html" style="color:#555;">Flash Tools</a> |
+    <a href="index.html" style="color:#555;">Privacy Policy</a> |
+    <a href="../contact/index.html" style="color:#555;">Contact</a>
+</div>
+
+</body>
+</html>

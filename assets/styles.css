@@ -1,0 +1,514 @@
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    background:#111;
+    color:#ddd;
+    font-family:'Roboto Mono', Consolas, 'Lucida Console', Monaco, monospace;
+    font-size:13px;
+    line-height:1.5;
+}
+
+h1 {
+    font-size:24px;
+    padding:6px 10px;
+    background:#222;
+    border-bottom:1px solid #444;
+}
+
+h1 span {
+    color:#888;
+    font-size:11px;
+    margin-left:8px;
+}
+
+h3 {
+    font-size:13px;
+    margin-top:14px;
+    margin-bottom:4px;
+    color:#aaa;
+    border-bottom:1px solid #333;
+    padding-bottom:2px;
+}
+
+#links {
+    padding:5px 10px;
+    font-size:13px;
+    color:#2edba7;
+    background:#1a1a1a;
+    border-bottom:1px solid #333;
+    min-height:22px;
+}
+
+a {
+    color:#2edba7;
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+#content {
+    padding:20px 40px;
+    max-width:900px;
+    margin:20px auto;
+}
+
+#content h2 {
+    font-size:15px;
+    color:#2edba7;
+    margin-top:28px;
+    margin-bottom:6px;
+    border-bottom:1px solid #2edba7;
+    padding-bottom:3px;
+}
+
+#content p {
+    color:#ccc;
+    margin-bottom:10px;
+}
+
+#content ul,
+#content ol {
+    color:#ccc;
+    padding-left:20px;
+    margin-bottom:10px;
+}
+
+#content li {
+    margin-bottom:3px;
+}
+
+.retention-note {
+    color:#88e;
+    border-left:2px solid #88e;
+    padding-left:8px;
+    margin:6px 0 10px;
+}
+
+table.info {
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:6px;
+    border:1px solid #333;
+}
+
+table.info td {
+    padding:4px 8px;
+    border:1px solid #2a2a2a;
+    vertical-align:middle;
+}
+
+table.info td.label {
+    color:#888;
+    white-space:nowrap;
+    width:40%;
+    text-align:right;
+    padding-right:10px;
+    background:#181818;
+}
+
+table.info td.val {
+    color:#eee;
+    word-break:break-all;
+}
+
+.contact-block {
+    background:#181818;
+    border:1px solid #333;
+    padding:8px 12px;
+    color:#8e8;
+    margin-top:6px;
+    display:inline-block;
+}
+
+.meta {
+    color:#555;
+    font-size:11px;
+    margin-bottom:20px;
+}
+
+.sub {
+    color:#aaa;
+}
+
+footer {
+    border-top:1px solid #333;
+    background:#161616;
+    margin-top:40px;
+    padding:14px 40px;
+    font-size:11px;
+    color:#555;
+}
+
+footer table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+footer td {
+    vertical-align:middle;
+    padding:0;
+}
+
+footer td.footer-right {
+    text-align:right;
+}
+
+footer a {
+    color:#555;
+    text-decoration:none;
+    margin-left:12px;
+}
+
+footer a:hover {
+    color:#2edba7;
+}
+
+body.month-1 #links,
+body.month-1 a,
+body.month-1 table.info td.val,
+body.month-1 .contact-block {
+    color:#CBCBCB;
+}
+
+body.month-1 #content h2 {
+    color:#CBCBCB;
+    border-bottom:1px solid #CBCBCB;
+}
+
+body.month-1 .retention-note {
+    color:#CBCBCB;
+    border-left:2px solid #CBCBCB;
+}
+
+body.month-1 footer a:hover {
+    color:#CBCBCB;
+}
+
+body.month-2 #links,
+body.month-2 a,
+body.month-2 table.info td.val,
+body.month-2 .contact-block {
+    color:#D8BF1A;
+}
+
+body.month-2 #content h2 {
+    color:#D8BF1A;
+    border-bottom:1px solid #D8BF1A;
+}
+
+body.month-2 .retention-note {
+    color:#D8BF1A;
+    border-left:2px solid #D8BF1A;
+}
+
+body.month-2 footer a:hover {
+    color:#D8BF1A;
+}
+
+body.month-3 #links,
+body.month-3 a,
+body.month-3 table.info td.val,
+body.month-3 .contact-block {
+    color:#6DB217;
+}
+
+body.month-3 #content h2 {
+    color:#6DB217;
+    border-bottom:1px solid #6DB217;
+}
+
+body.month-3 .retention-note {
+    color:#6DB217;
+    border-left:2px solid #6DB217;
+}
+
+body.month-3 footer a:hover {
+    color:#6DB217;
+}
+
+body.month-4 #links,
+body.month-4 a,
+body.month-4 table.info td.val,
+body.month-4 .contact-block {
+    color:#E17E9A;
+}
+
+body.month-4 #content h2 {
+    color:#E17E9A;
+    border-bottom:1px solid #E17E9A;
+}
+
+body.month-4 .retention-note {
+    color:#E17E9A;
+    border-left:2px solid #E17E9A;
+}
+
+body.month-4 footer a:hover {
+    color:#E17E9A;
+}
+
+body.month-5 #links,
+body.month-5 a,
+body.month-5 table.info td.val,
+body.month-5 .contact-block {
+    color:#178816;
+}
+
+body.month-5 #content h2 {
+    color:#178816;
+    border-bottom:1px solid #178816;
+}
+
+body.month-5 .retention-note {
+    color:#178816;
+    border-left:2px solid #178816;
+}
+
+body.month-5 footer a:hover {
+    color:#178816;
+}
+
+body.month-6 #links,
+body.month-6 a,
+body.month-6 table.info td.val,
+body.month-6 .contact-block {
+    color:#9A61C8;
+}
+
+body.month-6 #content h2 {
+    color:#9A61C8;
+    border-bottom:1px solid #9A61C8;
+}
+
+body.month-6 .retention-note {
+    color:#9A61C8;
+    border-left:2px solid #9A61C8;
+}
+
+body.month-6 footer a:hover {
+    color:#9A61C8;
+}
+
+body.month-7 #links,
+body.month-7 a,
+body.month-7 table.info td.val,
+body.month-7 .contact-block {
+    color:#02CDC7;
+}
+
+body.month-7 #content h2 {
+    color:#02CDC7;
+    border-bottom:1px solid #02CDC7;
+}
+
+body.month-7 .retention-note {
+    color:#02CDC7;
+    border-left:2px solid #02CDC7;
+}
+
+body.month-7 footer a:hover {
+    color:#02CDC7;
+}
+
+body.month-8 #links,
+body.month-8 a,
+body.month-8 table.info td.val,
+body.month-8 .contact-block {
+    color:#0C76C0;
+}
+
+body.month-8 #content h2 {
+    color:#0C76C0;
+    border-bottom:1px solid #0C76C0;
+}
+
+body.month-8 .retention-note {
+    color:#0C76C0;
+    border-left:2px solid #0C76C0;
+}
+
+body.month-8 footer a:hover {
+    color:#0C76C0;
+}
+
+body.month-9 #links,
+body.month-9 a,
+body.month-9 table.info td.val,
+body.month-9 .contact-block {
+    color:#B444C0;
+}
+
+body.month-9 #content h2 {
+    color:#B444C0;
+    border-bottom:1px solid #B444C0;
+}
+
+body.month-9 .retention-note {
+    color:#B444C0;
+    border-left:2px solid #B444C0;
+}
+
+body.month-9 footer a:hover {
+    color:#B444C0;
+}
+
+body.month-10 #links,
+body.month-10 a,
+body.month-10 table.info td.val,
+body.month-10 .contact-block {
+    color:#E5A708;
+}
+
+body.month-10 #content h2 {
+    color:#E5A708;
+    border-bottom:1px solid #E5A708;
+}
+
+body.month-10 .retention-note {
+    color:#E5A708;
+    border-left:2px solid #E5A708;
+}
+
+body.month-10 footer a:hover {
+    color:#E5A708;
+}
+
+body.month-11 #links,
+body.month-11 a,
+body.month-11 table.info td.val,
+body.month-11 .contact-block {
+    color:#875B1E;
+}
+
+body.month-11 #content h2 {
+    color:#875B1E;
+    border-bottom:1px solid #875B1E;
+}
+
+body.month-11 .retention-note {
+    color:#875B1E;
+    border-left:2px solid #875B1E;
+}
+
+body.month-11 footer a:hover {
+    color:#875B1E;
+}
+
+body.month-12 #links,
+body.month-12 a,
+body.month-12 table.info td.val,
+body.month-12 .contact-block {
+    color:#E3412A;
+}
+
+body.month-12 #content h2 {
+    color:#E3412A;
+    border-bottom:1px solid #E3412A;
+}
+
+body.month-12 .retention-note {
+    color:#E3412A;
+    border-left:2px solid #E3412A;
+}
+
+body.month-12 footer a:hover {
+    color:#E3412A;
+}
+
+body.hour-0  { background:#080808; }
+body.hour-1  { background:#060606; }
+body.hour-2  { background:#060606; }
+body.hour-3  { background:#080808; }
+body.hour-4  { background:#0A0A0A; }
+body.hour-5  { background:#0D0D0D; }
+body.hour-6  { background:#101010; }
+body.hour-7  { background:#131313; }
+body.hour-8  { background:#161616; }
+body.hour-9  { background:#191919; }
+body.hour-10 { background:#1C1C1C; }
+body.hour-11 { background:#1B1B1B; }
+body.hour-12 { background:#191919; }
+body.hour-13 { background:#181818; }
+body.hour-14 { background:#171717; }
+body.hour-15 { background:#151515; }
+body.hour-16 { background:#131313; }
+body.hour-17 { background:#111111; }
+body.hour-18 { background:#101010; }
+body.hour-19 { background:#0E0E0E; }
+body.hour-20 { background:#0C0C0C; }
+body.hour-21 { background:#0A0A0A; }
+body.hour-22 { background:#090909; }
+body.hour-23 { background:#080808; }
+
+
+.seasonal-heading {
+    color:#2edba7;
+    border-bottom:1px solid #2edba7;
+}
+
+body.month-1 .seasonal-heading {
+    color:#CBCBCB;
+    border-bottom:1px solid #CBCBCB;
+}
+
+body.month-2 .seasonal-heading {
+    color:#D8BF1A;
+    border-bottom:1px solid #D8BF1A;
+}
+
+body.month-3 .seasonal-heading {
+    color:#6DB217;
+    border-bottom:1px solid #6DB217;
+}
+
+body.month-4 .seasonal-heading {
+    color:#E17E9A;
+    border-bottom:1px solid #E17E9A;
+}
+
+body.month-5 .seasonal-heading {
+    color:#178816;
+    border-bottom:1px solid #178816;
+}
+
+body.month-6 .seasonal-heading {
+    color:#9A61C8;
+    border-bottom:1px solid #9A61C8;
+}
+
+body.month-7 .seasonal-heading {
+    color:#02CDC7;
+    border-bottom:1px solid #02CDC7;
+}
+
+body.month-8 .seasonal-heading {
+    color:#0C76C0;
+    border-bottom:1px solid #0C76C0;
+}
+
+body.month-9 .seasonal-heading {
+    color:#B444C0;
+    border-bottom:1px solid #B444C0;
+}
+
+body.month-10 .seasonal-heading {
+    color:#E5A708;
+    border-bottom:1px solid #E5A708;
+}
+
+body.month-11 .seasonal-heading {
+    color:#875B1E;
+    border-bottom:1px solid #875B1E;
+}
+
+body.month-12 .seasonal-heading {
+    color:#E3412A;
+    border-bottom:1px solid #E3412A;
+}

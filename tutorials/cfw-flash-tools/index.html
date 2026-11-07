@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PS3 4.93 Jailbreak & CFW Install Guide | PS3Tool</title>
+
+<meta name="description" content="Jailbreak your PS3 and install CFW on firmware 4.93 and below using PS3Tool. Step-by-step PS3 Flash Tool guide covering flash backup, verification, patching and CFW installation.">
+
+<meta name="keywords" content="PS3 jailbreak, PS3 4.93 jailbreak, jailbreak PS3, PS3 CFW, PS3 4.93 CFW, PS3 CFW install, install CFW PS3, PS3 flash tool, PS3 flash writer, PS3 flash patch, PS3 NOR, PS3 NAND, PS3 homebrew, PS3Tool">
+
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+
+<link rel="canonical" href="index.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PS3Tool">
+<meta property="og:title" content="PS3 4.93 Jailbreak & CFW Install Guide">
+<meta property="og:description" content="Step-by-step guide to jailbreak a compatible PS3 on firmware 4.93 or below and install CFW using PS3Tool Flash Tools.">
+<meta property="og:url" content="https://ps3tool.com/tutorials/cfw-flash-tools/">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PS3 4.93 Jailbreak & CFW Install Guide | PS3Tool">
+<meta name="twitter:description" content="Jailbreak a compatible PS3 and install CFW on 4.93 or below with PS3Tool Flash Tools. Flash backup, verification, patching and CFW installation.">
+
+<meta name="application-name" content="PS3Tool">
+<meta name="theme-color" content="#111111">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Jailbreak a PS3 and Install CFW on Firmware 4.93 or Below",
+    "description": "Step-by-step guide for installing CFW on a compatible PlayStation 3 using PS3Tool Flash Tools, including flash backup, verification and patching.",
+    "url": "https://ps3tool.com/tutorials/cfw-flash-tools/",
+    "datePublished": "2026-07",
+    "dateModified": "2026-09-22",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PS3Tool",
+        "url": "https://ps3tool.com/"
+    },
+    "step": [
+        {
+            "@type": "HowToStep",
+            "name": "Load PS3 Flash Tools",
+            "text": "Open the PS3Tool Flash Tools application on the PlayStation 3."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Create a PS3 flash backup",
+            "text": "Create and save a backup dump of the PS3 NOR or NAND flash memory before making modifications."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Verify the PS3 flash dump",
+            "text": "Verify the flash backup using PS3Tool Online Flash Verification or a compatible external flash checker."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Apply the CFW flash patch",
+            "text": "Load, verify and apply the appropriate CFW flash patch using PS3Tool."
+        },
+        {
+            "@type": "HowToStep",
+            "name": "Install PS3 CFW",
+            "text": "Restart the PlayStation 3 into Safe Mode and install the CFW system update."
+        }
+    ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+
+<center><h1>PS3Tool</h1>
+<div id="links"><a href="../../index.html">Home</a> | <a href="../../flashtool/v15/index.html">Flash Tools</a> | <a href="../../contact/index.html">Contact</a></div></center>
+
+<div id="content">
+
+    <h2 style="margin-top:0;">Tutorial: Installing CFW with our PS3 Flash Tools app on firmware 4.93 and below</h2>
+    <p class="meta">Created: July 2026</p>
+
+    <h3>Requirements</h3>
+    <p>In order to instal CFW on your PS3, you have to verify if your PS3 supports the traditional way of installing CFW.</p>
+	<p>If you are using a later model Slim model (CECH-25xx after 1A datecode and CECH-30xx) or a SuperSlim model (NOR version only), you have to use qCFW.</p>
+    <p>Supported models include:</p>
+	<ul>
+		<li>CECHA/B/C/E/G/H/J/K/L/M/P/Q Fat Consoles</li>
+		<li>CECH-20xx/21xx and some CECH-25xx Slim models</li>
+	</ul>
+	<p>You can check the model of your PS3 by looking at the sticker on the bottom of the console or the sticker on the rear side next to the ports.</p>
+	<br>
+
+    <h3>Step 1: Loading the Flash Tools app</h3>
+	<p>To load the Flash Tools app, simply press the "Flash Tools" link at the top of this page!</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step1.png" width="80%" style="display:block; margin-bottom:8px;">
+	<br>
+	<p>Accept any questions that it may ask for.</p>
+	<p>Once the app is loaded, it will show a different user interface and display your console data.</p>
+	<br>
+
+	<h3>Step 2: Create a backup dump of your flash memory</h3>
+	<p>To make sure you can recover your system in the case of a brick event, we highly recommend creating a flash backup on your USB flash device.</p>
+	<p>To create a flash backup, simply select the file destination location. Plug your USB flash drive into the right-most USB port and select "dev_usb000", if you use the left-most USB port, select "dev_usb006"!</p>
+	<p>Once you have specified the dump destination location, press on the "Start Dump" button. The top status bar will update as the dump progresses, for NOR systems it will be very fast however, on NAND systems it might take a while.</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step2.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>Wait for the top status bar to show "Flash dump saved successfully"</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step2verify.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>If the dump save fails, try to change the destination.</p>
+	<br>
+
+	<h3>Step 3: (Highly recommended) Verify the dumped flash backup</h3>
+	<p>You can verify your dump using two methods, one is the "Online Flash Verification" option in the app, and the other is manually verifying it yourself with a tool like PS3PyChecker on a separate computer.</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step3opt.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>We recommend doing the latter option for your own peace of mind and because it is a lot faster.</p>
+	<p>Online Flash Verification only works with dumps located on "dev_hdd0"!</p>
+	<br>
+
+	<h3>Step 4: Loading and applying the flash patch</h3>
+	<p style="color:#b86200">Warning: This is the part where the flash patch is applied, we have to remind you that if anything bad happens here, we bear no responsibility for it. <b>Back. Your. Flash. Up!</b></p>
+	<p>To load the patch into memory, press the "Load Online Patch" option.</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step4.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>Once the status bar at the top of the screen says "Patch verified and ready to flash", you can proceed to applying the loaded patch!</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step4apply.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>Once you press "Apply Patch", do not the controller, leave it alone to apply the patch.</p>
+	<p>On NAND systems, the process will be near instant (10-15 seconds), on NOR systems it will take a little bit longer.</p>
+	<p>Wait for the message that says you can restart the console safely, once it shows up, get your CFW update USB ready!</p>
+	<br>
+
+	<h3>Step 5: Updating the PS3 to CFW</h3>
+	<p>Once the flash patching is completed, turn the system off.</p>
+	<p>Flashing the CFW update should always be done in safe mode!!!</p>
+	<p>Once the console is off, press and HOLD the power button. You will hear the initial beep, then after a couple of seconds a second beep after which the console will power off. Release the power button now.</p>
+	<p>Press and HOLD the power button again, you will hear the initial beep, then a second beep and after a few more seconds you will hear two beeps. You can now release the power button.</p>
+	<p>Plug in your DualShock3 or SixAxis joystick in with a USB cable and press the PS button.</p>
+	<p>Select option "6. System Update" and follow the instructions on the screen.</p>
+	<img src="../../images/tutorials/cfw-flash-tools/step5.png" width="80%" style="display:block; margin-bottom:8px;">
+	<img src="../../images/tutorials/cfw-flash-tools/step5upd.png" width="80%" style="display:block; margin-bottom:8px;">
+	<p>After this, your PS3 will update with CFW! Enjoy :D</p>
+	
+
+	
+
+</div>
+
+<div style="border-top:1px solid #444; background:#222; padding:6px 10px; font-size:11px; color:#555;">
+    &copy; 2026 PS3Tool.com &nbsp;|&nbsp;
+    <a href="../../index.html" style="color:#555;">Home</a> |
+    <a href="../../flashtool/index.html" style="color:#555;">Flash Tools</a> |
+    <a href="../../privacy/index.html" style="color:#555;">Privacy Policy</a> |
+    <a href="../../contact/index.html" style="color:#555;">Contact</a>
+</div>
+
+<script src="../../assets/app.js"></script>
+</body>
+</html>
